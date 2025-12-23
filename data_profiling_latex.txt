@@ -1,0 +1,96 @@
+
+\subsection{Data Profiling by Feature Groups}
+
+Following the domain-driven feature classification established in our analysis, we present comprehensive data profiling organized by functional categories. This structured approach facilitates understanding of the Ames Housing dataset's composition and characteristics.
+
+\subsubsection{Property Identification \& Location}
+
+\textbf{Location Features (3 features):} Neighborhood, Condition1, Condition2
+
+The location group exhibits high cardinality with 25 unique neighborhoods in the dataset. Neighborhood shows moderate correlation with SalePrice (r = -0.14), indicating geographical price variation within Ames. Condition1 and Condition2 describe proximity to various urban features (arterial streets, railroads, parks), with ``Norm'' (normal) being the predominant category (86.3\% for Condition1, 99.0\% for Condition2).
+
+\textbf{Property Type Features (4 features):} MSSubClass, MSZoning, BldgType, HouseStyle
+
+Property type features categorize dwelling characteristics. MSZoning is dominated by ``RL'' (Residential Low Density, 78.8\%), while BldgType shows ``1Fam'' (Single-family Detached) as the most common (83.6\%). HouseStyle reveals ``1Story'' (49.7\%) and ``2Story'' (30.5\%) as the predominant architectural styles.
+
+\subsubsection{Lot \& Land Characteristics}
+
+\textbf{Lot Size \& Shape (4 features):} LotFrontage, LotArea, LotShape, LotConfig
+
+LotArea exhibits right-skewed distribution (skewness = 12.20) with mean 10,517 sq ft and median 9,478 sq ft. The substantial difference between mean and median indicates the presence of large-lot outliers. LotFrontage has 17.74\% missing values, interpreted as properties without street frontage. LotShape shows 63.4\% ``Reg'' (regular) lots, while irregular shapes (IR1, IR2, IR3) comprise the remainder.
+
+\textbf{Topography \& Access (5 features):} LandContour, LandSlope, Street, Alley, Utilities
+
+Land topography features reveal predominantly flat, level properties (Lvl: 89.8\%) with gentle slopes (Gtl: 94.7\%). Street access is almost exclusively paved (Pave: 99.6\%), while Alley access is rare (93.77\% missing, indicating ``No alley access''). Utilities show near-universal availability of all public utilities (AllPub: 99.9\%).
+
+\subsubsection{Exterior \& Structural Features}
+
+\textbf{Exterior Materials (4 features):} Exterior1st, Exterior2nd, MasVnrType, MasVnrArea
+
+Exterior covering exhibits diversity with VinylSd (35.3\%) and HdBoard (15.2\%) as dominant materials. MasVnrType shows 0.0\% ``None'' (no masonry veneer), with BrkFace being the most common type when present (30.5\%). MasVnrArea demonstrates right-skewed distribution (skewness = 2.67), consistent with the binary presence/absence nature of this feature.
+
+\textbf{Roof \& Foundation (5 features):} RoofStyle, RoofMatl, Foundation, ExterQual, ExterCond
+
+Roof features show low variability: ``Gable'' style dominates (78.2\%), and ``CompShg'' (Composite Shingle) material represents 98.2\% of observations. Foundation types are distributed among PConc, CBlock, and BrkTil. Quality ratings (ExterQual, ExterCond) follow ordinal scales with ``TA'' (Typical/Average) as modal categories.
+
+\subsubsection{Quality \& Condition Ratings}
+
+\textbf{Overall Assessment (2 features):} OverallQual, OverallCond
+
+OverallQual exhibits the strongest correlation with SalePrice (r = 0.79), confirming its critical predictive importance. The distribution shows concentration in middle grades (5--7), with mean of 6.10. OverallCond demonstrates similar ordinal structure but weaker correlation (r = -0.08), suggesting buyers prioritize quality over condition.
+
+\textbf{Component Quality Features (6 features):} HeatingQC, KitchenQual, FireplaceQu, GarageQual, GarageCond, PoolQC
+
+Component-specific quality ratings follow the standardized ordinal scale (Po=1, Fa=2, TA=3, Gd=4, Ex=5). KitchenQual shows strong correlation with SalePrice (r = 0.66). FireplaceQu has 47.26\% missing values (interpreted as ``No Fireplace''), while PoolQC exhibits 99.52\% missingness, reflecting the rarity of pools in the dataset.
+
+\subsubsection{Living Area, Rooms \& Bathrooms}
+
+\textbf{Floor Area Features (4 features):} GrLivArea, 1stFlrSF, 2ndFlrSF, LowQualFinSF
+
+GrLivArea (Above Grade Living Area) demonstrates strong positive correlation with SalePrice (r = 0.71) with mean 1,515 sq ft and right-skewed distribution (skewness = 1.37). The dataset shows prevalence of single-story homes, with 2ndFlrSF having 56.8\% zero values. LowQualFinSF is sparse (98.2\% zeros), indicating rare occurrence of low-quality finished space.
+
+\textbf{Room Count Features (5 features):} TotRmsAbvGrd, BedroomAbvGr, KitchenAbvGr, FullBath, HalfBath
+
+Room counts exhibit discrete distributions with TotRmsAbvGrd averaging 6.52 rooms. BedroomAbvGr shows modal value of 3 bedrooms (55.1\%). KitchenAbvGr is predominantly 1 (95.3\%), reflecting standard residential design. Bathroom features (FullBath, HalfBath) demonstrate positive correlation with price, with average of 1.57 full baths and 0.38 half baths per property.
+
+\subsubsection{Basement Features}
+
+\textbf{Basement Characteristics (11 features):} BsmtQual, BsmtCond, BsmtExposure, BsmtFinType1, BsmtFinSF1, BsmtFinType2, BsmtFinSF2, BsmtUnfSF, TotalBsmtSF, BsmtFullBath, BsmtHalfBath
+
+Basement features exhibit cohesive missing patterns (2.53\% for quality/condition features), interpreted as ``No Basement'' and encoded as 0. Among properties with basements, ``TA'' (Typical) quality predominates (45.6\%). TotalBsmtSF demonstrates strong correlation with SalePrice (r = 0.61), highlighting basement value contribution.
+
+\subsubsection{Garage Features}
+
+\textbf{Garage Specifications (7 features):} GarageType, GarageYrBlt, GarageFinish, GarageCars, GarageArea, GarageQual, GarageCond
+
+Garage features display unified missing patterns (5.55\%), indicating properties without garages. Among properties with garages, ``Attchd'' (Attached) is the dominant type (63.1\%). GarageArea exhibits strong positive correlation with SalePrice (r = 0.62), while capacity (GarageCars) shows discrete distribution centered at 2-car garages (56.4\%).
+
+\subsubsection{Systems \& Utilities}
+
+\textbf{HVAC \& Electrical (3 features):} Heating, CentralAir, Electrical
+
+Heating systems show overwhelming dominance of ``GasA'' (Gas forced warm air, 97.8\%). CentralAir exhibits binary distribution with 93.5\% having central air conditioning. Electrical systems are predominantly ``SBrkr'' (Standard Circuit Breakers, 91.4\%), indicating modern wiring in most properties.
+
+\subsubsection{Outdoor Features \& Amenities}
+
+\textbf{Porch Features (5 features):} WoodDeckSF, OpenPorchSF, EnclosedPorch, 3SsnPorch, ScreenPorch
+
+Porch features demonstrate high zero-inflation (52.1\% for WoodDeckSF, 44.9\% for OpenPorchSF, 85.8\% for EnclosedPorch), reflecting selective presence. When present, OpenPorchSF shows average area of 84.7 sq ft.
+
+\textbf{Special Amenities (5 features):} PoolArea, PoolQC, Fence, MiscFeature, MiscVal
+
+Special amenities exhibit extreme sparsity: PoolArea has 99.5\% zeros, Fence shows 80.8\% missing (``No Fence''), and MiscFeature displays 96.3\% ``None'' values. This sparsity reflects luxury/optional nature of these features, with minimal price impact for most properties.
+
+\subsubsection{Temporal \& Sale Information}
+
+\textbf{Construction Dates (2 features):} YearBuilt, YearRemodAdd
+
+YearBuilt ranges from 1872 to 2010, with median 1973. YearRemodAdd shows 52.3\% exact matches with YearBuilt, indicating no remodeling. These temporal features enabled creation of engineered variables (HouseAge, YearsSinceRemodel, WasRemodeled).
+
+\textbf{Sale Timing \& Type (4 features):} MoSold, YrSold, SaleType, SaleCondition
+
+Sale dates span 2006 to 2010, with seasonal patterns evident (55.7\% of sales in summer months May--August). SaleType is dominated by ``WD'' (Warranty Deed -- Conventional, 86.8\%), while SaleCondition shows ``Normal'' as modal category (82.1\%). These features capture transaction context but show weak direct correlation with price.
+
+\subsubsection{Summary Statistics}
+
+The complete dataset comprises 80 original features (37 numeric, 43 categorical) organized into 12 functional groups. After preprocessing and feature engineering, intelligent treatment of missing values, ordinal encoding of quality ratings (0--5 scale for features with ``NA'' as valid category, 1--5 otherwise), one-hot encoding of low-cardinality categoricals, and creation of domain-relevant interactions and ratios enhanced the feature space for modeling.
